@@ -1,0 +1,27 @@
+[
+  {
+    "name": "io.micronaut.configuration.metrics.management.endpoint.MetricsEndpoint",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.micronaut.configuration.metrics.management.endpoint.MetricsEndpoint$MetricNames",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.micronaut.configuration.metrics.management.endpoint.MetricsEndpoint$MetricDetails",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.micronaut.configuration.metrics.management.endpoint.MetricsEndpoint$AvailableTag",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.micronaut.configuration.metrics.management.endpoint.MetricsEndpoint$Sample",
+    "allDeclaredConstructors": true,
+    "allPublicMethods": true
+  }
+]
