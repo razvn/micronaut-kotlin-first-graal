@@ -36,6 +36,11 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
     compile "io.micronaut:micronaut-runtime"
     compile "javax.annotation:javax.annotation-api"
+    //metrics
+    compile "io.micronaut.configuration:micronaut-micrometer-core"
+    // Also required to enable endpoint
+    compile "io.micronaut:micronaut-management"
+    
     compileOnly "com.oracle.substratevm:svm"
     kapt "io.micronaut:micronaut-inject-java"
     kapt "io.micronaut:micronaut-validation"

@@ -1,44 +1,39 @@
 # Micronaut - Creating your first Micronaut Kotlin Graal application
 
-Based on [the Java version of the guide](https://guides.micronaut.io/micronaut-creating-first-graal-app/guide/index.html)
+Based on the first Kotlin Graal application made on the the [branch master](https://github.com/razvn/micronaut-kotlin-first-graal/tree/master)
+
+Add the [Micronaut Mircometer Guide](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/)
 
 
-## Changes 
-
- - Application generation:
+## Update the config
  
-```
- mn create-app example.micronaut.complete --features=graal-native-image,kotlin
+Added to `application.yaml` 
+```yaml
+  metrics:
+    enabled: true
 ```
 
- - Update to Kotlin 1.3.31
+## Add the dependencies
+
+Added to `build.gradle`
+
+```
+    compile "io.micronaut.configuration:micronaut-micrometer-core"
+    compile "io.micronaut:micronaut-management"
+```
+ 
  
  
 ## Problem
 
- - Json response is empty ([tag v0.1](https://github.com/razvn/micronaut-kotlin-first-graal/tree/v0.1))
- 
- ```
- time curl localhost:8080/conferences/random
- {}
- 0.01s user 
- 0.01s system 
- 0.023 total
- ```
- 
- **Fixed by adding in `application.yml`** ([tag v0.2](https://github.com/razvn/micronaut-kotlin-first-graal/tree/v0.2)):
- 
- ```yaml
- jackson:
-   bean-introspection-module: true
- ```
+When run native:
 
-Result:
+ - No serializer found ([tag v0.3](https://github.com/razvn/micronaut-kotlin-first-graal/tree/v0.3))
+
  ```
- time curl localhost:8080/conferences/random                                
- {"name":"Greach"}
- 0.01s user 
- 0.02s system 
- 0.046 total
+curl -v localhost:8080/metrics
+                              
+< HTTP/1.1 500 Internal Server Error
+
+{"message":"Internal Server Error: Error encoding object [io.micronaut.configuration.metrics.management.endpoint.MetricsEndpoint$MetricNames@10c414e20] to JSON: No serializer found for class io.micronaut.configuration.metrics.management.endpoint.MetricsEndpoint$MetricNames and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)"}
  ```
- 
